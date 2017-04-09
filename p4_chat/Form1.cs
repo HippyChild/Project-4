@@ -12,6 +12,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Collections;
 
 namespace p4_chat
 {
@@ -22,6 +23,7 @@ namespace p4_chat
         private StreamWriter writer;
         private String textReceived;
         private String textToSend;
+        private ArrayList usernames = new ArrayList();
 
         private void Server()
         {
@@ -46,9 +48,27 @@ namespace p4_chat
             }
         }
 
-        private void Client()
+        public void Client(String ip, String userName)
         {
+            client = new TcpClient();
+            IPEndPoint IpEnd = new IPEndPoint(IPAddress.Parse(ip), 51111);
 
+            try
+            {
+                client.Connect(IpEnd);
+                if (client.Connected)
+                {
+                    writer = new StreamWriter(client.GetStream());
+                    reader = new StreamReader(client.GetStream());
+                    writer.AutoFlush = true;
+
+                    backgroundWorker1.RunWorkerAsync();  // start receiving data in the background
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public Form1()
@@ -70,8 +90,7 @@ namespace p4_chat
                     textReceived = reader.ReadLine();
                     textReceivedTextBox.Invoke(new MethodInvoker(delegate ()
                     {
-                        textReceivedTextBox.Clear();
-                        textReceivedTextBox.AppendText(textReceived);
+                        textReceivedTextBox.AppendText("\n" + textReceived);
                     }));
                     textReceived = "";
                 }
