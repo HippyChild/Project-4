@@ -83,6 +83,15 @@ namespace p4_chat
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {//join server button
+
+            Popup pop = new Popup();
+            pop.ShowDialog();
+            //userName
+
+        }
+
+        private void textReceivedTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
