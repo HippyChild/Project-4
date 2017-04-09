@@ -17,10 +17,22 @@ namespace p4_chat
 {
     public partial class Form1 : Form
     {
+        private TcpClient client;
+        private StreamReader reader;
+        private StreamWriter writer;
+        private String textReceived;
+        private String textToSend;
+
         private void Server()
         {
             TcpListener listener = new TcpListener(IPAddress.Any, 51111);
             listener.Start();
+            client = listener.AcceptTcpClient();
+            reader = new StreamReader(client.GetStream());
+            writer = new StreamWriter(client.GetStream());
+            writer.AutoFlush = true;
+
+            backgroundWorker1.RunWorkerAsync();  // start receving data in the background
             while (true)
             {
                 try
@@ -34,6 +46,11 @@ namespace p4_chat
             }
         }
 
+        private void Client()
+        {
+
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -42,6 +59,27 @@ namespace p4_chat
         private void button1_Click(object sender, EventArgs e)
         {
             new Thread(Server).Start();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (client.Connected)
+            {
+                try
+                {
+                    textReceived = reader.ReadLine();
+                    textReceivedTextBox.Invoke(new MethodInvoker(delegate ()
+                    {
+                        textReceivedTextBox.Clear();
+                        textReceivedTextBox.AppendText(textReceived);
+                    }));
+                    textReceived = "";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }
