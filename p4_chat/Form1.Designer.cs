@@ -39,10 +39,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(86, 454);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Location = new System.Drawing.Point(278, 418);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 37);
+            this.button1.Size = new System.Drawing.Size(116, 30);
             this.button1.TabIndex = 0;
             this.button1.Text = "Host Server";
             this.button1.UseVisualStyleBackColor = true;
@@ -55,9 +54,10 @@
             // joinServer
             // 
             this.joinServer.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.joinServer.Location = new System.Drawing.Point(86, 391);
+            this.joinServer.Location = new System.Drawing.Point(278, 367);
+            this.joinServer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.joinServer.Name = "joinServer";
-            this.joinServer.Size = new System.Drawing.Size(130, 36);
+            this.joinServer.Size = new System.Drawing.Size(116, 29);
             this.joinServer.TabIndex = 1;
             this.joinServer.Text = "join Server";
             this.joinServer.UseVisualStyleBackColor = true;
@@ -65,52 +65,54 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(86, 311);
+            this.textBox1.Location = new System.Drawing.Point(76, 293);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(614, 26);
+            this.textBox1.Size = new System.Drawing.Size(546, 22);
             this.textBox1.TabIndex = 3;
             // 
             // textReceivedTextBox
             // 
             this.textReceivedTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textReceivedTextBox.Location = new System.Drawing.Point(86, 70);
+            this.textReceivedTextBox.Location = new System.Drawing.Point(76, 56);
+            this.textReceivedTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textReceivedTextBox.Multiline = true;
             this.textReceivedTextBox.Name = "textReceivedTextBox";
             this.textReceivedTextBox.ReadOnly = true;
-            this.textReceivedTextBox.Size = new System.Drawing.Size(637, 165);
+            this.textReceivedTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textReceivedTextBox.Size = new System.Drawing.Size(567, 177);
             this.textReceivedTextBox.TabIndex = 4;
             this.textReceivedTextBox.TextChanged += new System.EventHandler(this.textReceivedTextBox_TextChanged);
             // 
             // labelReceived
             // 
             this.labelReceived.AutoSize = true;
-            this.labelReceived.Location = new System.Drawing.Point(82, 25);
+            this.labelReceived.Location = new System.Drawing.Point(73, 20);
             this.labelReceived.Name = "labelReceived";
-            this.labelReceived.Size = new System.Drawing.Size(144, 20);
+            this.labelReceived.Size = new System.Drawing.Size(128, 17);
             this.labelReceived.TabIndex = 5;
             this.labelReceived.Text = "Message Received";
             // 
             // labelSent
             // 
             this.labelSent.AutoSize = true;
-            this.labelSent.Location = new System.Drawing.Point(82, 273);
+            this.labelSent.Location = new System.Drawing.Point(73, 262);
             this.labelSent.Name = "labelSent";
-            this.labelSent.Size = new System.Drawing.Size(112, 20);
+            this.labelSent.Size = new System.Drawing.Size(98, 17);
             this.labelSent.TabIndex = 6;
             this.labelSent.Text = "Message Sent";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 538);
+            this.ClientSize = new System.Drawing.Size(722, 483);
             this.Controls.Add(this.labelSent);
             this.Controls.Add(this.labelReceived);
             this.Controls.Add(this.textReceivedTextBox);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.joinServer);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
