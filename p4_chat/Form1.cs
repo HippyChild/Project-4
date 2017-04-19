@@ -81,6 +81,22 @@ namespace p4_chat
             new Thread(Server).Start();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {//join server button
+            panel2.Hide();
+            panel3.Show();
+        }
+
+        private void textReceivedTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void send_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             while (client.Connected)
@@ -101,18 +117,23 @@ namespace p4_chat
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {//join server button
-
-            Popup pop = new Popup();
-            pop.ShowDialog();
-            //userName
-
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            //127.0.0.1
+            if (serverName.Text == "" || userName.Text == "")
+            {
+                failLabel.Visible = true;
+            }
+            else
+            {
+                
+            }
         }
 
-        private void textReceivedTextBox_TextChanged(object sender, EventArgs e)
+        private void cancel_Click(object sender, EventArgs e)
         {
-
+            panel2.Show();
+            panel3.Hide();
         }
     }
 }
