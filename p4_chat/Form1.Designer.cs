@@ -83,6 +83,7 @@
             this.textBox1.Location = new System.Drawing.Point(38, 222);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(362, 20);
             this.textBox1.TabIndex = 3;
             // 
@@ -97,7 +98,6 @@
             this.textReceivedTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textReceivedTextBox.Size = new System.Drawing.Size(426, 145);
             this.textReceivedTextBox.TabIndex = 4;
-            this.textReceivedTextBox.TextChanged += new System.EventHandler(this.textReceivedTextBox_TextChanged);
             // 
             // labelReceived
             // 
@@ -121,6 +121,7 @@
             // 
             // send
             // 
+            this.send.Enabled = false;
             this.send.Location = new System.Drawing.Point(405, 220);
             this.send.Name = "send";
             this.send.Size = new System.Drawing.Size(59, 23);
@@ -140,13 +141,12 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(507, 257);
             this.panel1.TabIndex = 8;
-            this.panel1.Visible = false;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.joinServer);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(151, 287);
+            this.panel2.Location = new System.Drawing.Point(19, 279);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(203, 97);
             this.panel2.TabIndex = 9;
@@ -221,7 +221,7 @@
             this.panel3.Controls.Add(this.userName);
             this.panel3.Controls.Add(this.serverName);
             this.panel3.Controls.Add(this.buttonAdd);
-            this.panel3.Location = new System.Drawing.Point(400, 298);
+            this.panel3.Location = new System.Drawing.Point(251, 279);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(275, 238);
             this.panel3.TabIndex = 16;
@@ -241,7 +241,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 548);
+            this.ClientSize = new System.Drawing.Size(548, 521);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
