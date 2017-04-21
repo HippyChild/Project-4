@@ -40,7 +40,7 @@ namespace p4_chat
                     textReceived = reader.ReadLine();
                     textReceivedTextBox.Invoke(new MethodInvoker(delegate ()
                     {
-                        textReceivedTextBox.AppendText(Environment.NewLine + textReceived);
+                        textReceivedTextBox.AppendText(textReceived + Environment.NewLine);
                     }));
                     if(textReceived == "Username " + username + " taken, please try again.")
                     {
@@ -54,7 +54,14 @@ namespace p4_chat
                     client.Close();
                 }
             }
-            panel1.Visible = false;
+            chatPanel.Invoke(new MethodInvoker(delegate ()
+            {
+                chatPanel.Hide();
+            }));
+            panel2.Invoke(new MethodInvoker(delegate ()
+            {
+                panel2.Show();
+            }));
         }
 
         /*
@@ -75,13 +82,14 @@ namespace p4_chat
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("User " + usernames[sock] + " has disconnected from the chat.");
                     client.Close();
                 }
             }
-            if(readerSocket >= sock)
+            if (readerSocket >= sock)
             {
                 readerSocket--;
+                usernames.RemoveAt(sock);
                 Readers.RemoveAt(sock);
                 Writers.RemoveAt(sock);
             }
@@ -90,6 +98,7 @@ namespace p4_chat
                 var temp = sock - readerSocket;
                 temp = sock - temp;
                 readerSocket--;
+                usernames.RemoveAt(temp);
                 Readers.RemoveAt(temp);
                 Writers.RemoveAt(temp);
             }
@@ -97,12 +106,14 @@ namespace p4_chat
 
         private void Server()
         {
-            textBox1.Visible = false;
+            chatPanel.Hide();
             send.Visible = false;
             labelSent.Visible = false;
+            panel2.Hide();
             TcpListener listener = new TcpListener(IPAddress.Any, 51111);
             listener.Start();
             var nameTaken = false;
+            textReceivedTextBox.AppendText("Server started, awaiting connections..." + Environment.NewLine);
             while (true)
             {
                 client = listener.AcceptTcpClient();
@@ -119,8 +130,8 @@ namespace p4_chat
                     {
                         if (usernames.Contains(textReceived))
                         {
-                            dataSender("Username " + textReceived + " taken, connection refused. Please Restart Client to retry.");
-                            textReceivedTextBox.AppendText("Error: connection received, username already taken." + Environment.NewLine);
+                            dataSender("Username " + textReceived + " taken, please try again.");
+                            textReceivedTextBox.AppendText("Error: connection received, username " + textReceived + " already taken" + Environment.NewLine);
                             nameTaken = true;
                             Readers.RemoveAt(Readers.Count - 1);
                             Writers.RemoveAt(Writers.Count - 1);
@@ -130,7 +141,7 @@ namespace p4_chat
                     if (!nameTaken)
                     {
                         usernames.Add(textReceived);
-                        textReceivedTextBox.AppendText("Connection Recieved from user " + textReceived + Environment.NewLine);
+                        textReceivedTextBox.AppendText("Connection received from user " + textReceived + Environment.NewLine);
                         textReceived = "";
                         readerSocket++;
                         Task.Factory.StartNew(() => serverReader());// start recieving data in the background
@@ -169,10 +180,10 @@ namespace p4_chat
                 if (client.Connected)
                 {
                     send.Enabled = true;
-                    textBox1.ReadOnly = false;
+                    chatPanel.Show();
                     panel1.Show();
                     panel3.Hide();
-                    textReceivedTextBox.AppendText("Connected to Server!");
+                    textReceivedTextBox.AppendText("Connected to Server!" + Environment.NewLine);
 
                     writer = new StreamWriter(client.GetStream());
                     reader = new StreamReader(client.GetStream());

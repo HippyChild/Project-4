@@ -46,9 +46,11 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cancel = new System.Windows.Forms.Button();
+            this.chatPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.chatPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -80,12 +82,12 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(38, 222);
+            this.textBox1.Location = new System.Drawing.Point(12, 26);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(362, 20);
             this.textBox1.TabIndex = 3;
+            this.textBox1.UseWaitCursor = true;
             // 
             // textReceivedTextBox
             // 
@@ -112,7 +114,7 @@
             // labelSent
             // 
             this.labelSent.AutoSize = true;
-            this.labelSent.Location = new System.Drawing.Point(36, 197);
+            this.labelSent.Location = new System.Drawing.Point(10, 1);
             this.labelSent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSent.Name = "labelSent";
             this.labelSent.Size = new System.Drawing.Size(75, 13);
@@ -122,7 +124,7 @@
             // send
             // 
             this.send.Enabled = false;
-            this.send.Location = new System.Drawing.Point(405, 220);
+            this.send.Location = new System.Drawing.Point(379, 24);
             this.send.Name = "send";
             this.send.Size = new System.Drawing.Size(59, 23);
             this.send.TabIndex = 7;
@@ -132,11 +134,9 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.send);
-            this.panel1.Controls.Add(this.labelSent);
+            this.panel1.Controls.Add(this.chatPanel);
             this.panel1.Controls.Add(this.labelReceived);
             this.panel1.Controls.Add(this.textReceivedTextBox);
-            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Location = new System.Drawing.Point(19, 16);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(507, 257);
@@ -237,6 +237,17 @@
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
+            // chatPanel
+            // 
+            this.chatPanel.Controls.Add(this.send);
+            this.chatPanel.Controls.Add(this.labelSent);
+            this.chatPanel.Controls.Add(this.textBox1);
+            this.chatPanel.Location = new System.Drawing.Point(27, 194);
+            this.chatPanel.Name = "chatPanel";
+            this.chatPanel.Size = new System.Drawing.Size(464, 60);
+            this.chatPanel.TabIndex = 8;
+            this.chatPanel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,6 +264,8 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.chatPanel.ResumeLayout(false);
+            this.chatPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -277,6 +290,7 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button cancel;
+        private System.Windows.Forms.Panel chatPanel;
     }
 }
 
