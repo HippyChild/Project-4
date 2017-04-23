@@ -1,7 +1,7 @@
 ﻿/*
- * Author: Tyler Hebert & 
- * CLID:   txh3285      & 
- * 
+ * Author: Tyler Hebert & Eddie Zhou 
+ * CLID:   txh3285 & emz6039
+ *         
  * Class:  CMPS 358
  * 
  * Assignment: project #004
